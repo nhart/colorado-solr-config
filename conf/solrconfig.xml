@@ -490,27 +490,6 @@
         -->
     </lst>
   </requestHandler>
-
-
-<requestHandler name="adr" class="solr.SearchHandler" default="true">
-    <!-- default values for query parameters -->
-    <lst name="defaults">
-      <str name="echoParams">explicit</str>
-      <str name="fl"
-        >Title,Alternative_Title,Creator,Contributor,Contributor_Corporate,Corporate_Creator,Type_of_Resource,Date_Created,Date_Issued,Date_Digitized,Date_Copyright,Other_Date,Digital_Origin,Abstract,Physical_Location,Topics,Places,Dates,People,Organizations,Subject_Genres,Scale,Handle,Rights_Statement,Genre,Place_of_Publication,Publisher,Issuance,Frequency,Language,Extent,Form,Physical_Note,Target_Audience,Note,Administrative_Note,Funding_Note,Bibliographic_Note,Preceding_Title,Succeeding_Title,Host_Title,Constituent_Title,Series_Title,Identifier,Local_Identifier,ISBN,ISSN,Conference,Uniform_Title,Classification,Record_Identifier,Thesis_Advisor,Committee_Member,School_or_Department,Institution,Degree_Type,Degree_Name,Access_Restrictions,Titles,Creators,Contributors,Date_Fields,Subjects,Identifiers,Note_Fields,Material_Types,PID,fgs.lastModifiedDate,fgs.ownerId,fgs.createdDate,fgs.state
-</str>
-      <str name="q.alt">*:*</str>
-      <str name="qf"
-        >
-        dsm.Text PID^5 mods.abstract^4 mods.accessRestrictions mods.committeeMember mods.constituentTitle mods.contributor^3 mods.contributorCorporate^3 mods.creator^4 mods.creatorCorporate^4 mods.dateCaptured mods.dateCopyright mods.dateCreated mods.dateIssued mods.dateOther mods.dates^4 mods.degreeGrantor mods.digitalOrigin mods.extent mods.form mods.frequency mods.genre mods.geographic^4 mods.handle mods.hostTitle mods.identifier^5 mods.isbn^5 mods.issn^5 mods.issuance mods.language mods.localIdentifier^5 mods.note^3 mods.noteAdmin^3 mods.noteBiblio^3 mods.noteDegreeName mods.noteDegreeType mods.noteFunding mods.notePhysical mods.organization^3 mods.people^4 mods.physicalLocation mods.placeOfPublication mods.precedingTitle mods.publisher mods.rightsStatement mods.scale^2 mods.seriesTitle^3 mods.sponsor mods.subjectGenre^3 mods.succeedingTitle mods.targetAudience mods.thesisAdvisor^3 mods.title^5 mods.titleAlt^3 mods.topic^4 mods.typeOfResource 
-       </str>
-    </lst>
-    <lst name="appends">
-      <str name="fq">PID:adr*</str>
-    </lst>
-
-  </requestHandler>
-
   <!--  
   <requestHandler name="coccc_dc" class="solr.SearchHandler" default="true">
 
@@ -540,6 +519,20 @@
         mods.dateIssued^2.0 mods.form^1.5 mods.language^1.5 mods.placeOfPublication^2.0 mods.publisher^2.0 mods.rightsStatement^1.5 mods.localIdentifier^2.0
         mods.organization^4.0 mods.genre^4.0 mods.geographic^4.0 mods.people^4.0 mods.dates^4.0 mods.title^5.0 mods.topics^4.0 mods.issn^4.0 mods.isbn^4.0 dsm.Text^3.0 PID^0.5
       </str> -->
+  <requestHandler name="adr" class="solr.SearchHandler" default="true">
+    <!-- default values for query parameters -->
+    <lst name="defaults">
+      <str name="echoParams">explicit</str>
+      <str name="fl">Title,Alternative_Title,Creator,Contributor,Contributor_Corporate,Corporate_Creator,Type_of_Resource,Date_Created,Date_Issued,Date_Digitized,Date_Copyright,Other-</str>
+      <str name="q.alt">*:*</str>
+      <str name="qf">
+        dsm.Text PID^5 mods.abstract^4 mods.accessRestrictions mods.committeeMember mods.constituentTitle mods.contributor^3 mods.contributorCorporate^3 mods.creator^4 mo-       </str>
+    </lst>
+    <lst name="appends">
+      <str name="fq">PID:adr*</str>
+    </lst>
+
+  </requestHandler>
 
   <requestHandler name="coccc" class="solr.SearchHandler" default="true">
     <!-- default values for query parameters -->
