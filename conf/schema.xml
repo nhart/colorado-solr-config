@@ -241,11 +241,8 @@
         so that a query of "wifi" or "wi fi" could match a document containing "Wi-Fi".
         Synonyms and stopwords are customized by external files, and stemming is enabled.
         -->
-
-
     <fieldType name="text" class="solr.TextField" positionIncrementGap="100">
       <analyzer type="index">
- 	<charFilter class="solr.MappingCharFilterFactory" mapping="mapping-ISOLatin1Accent.txt"/>
         <tokenizer class="solr.WhitespaceTokenizerFactory"></tokenizer>
         <!-- in this example, we will only use synonyms at query time
         <filter class="solr.SynonymFilterFactory" synonyms="index_synonyms.txt" ignoreCase="true" expand="false"/>
@@ -264,7 +261,6 @@
           protected="protwords.txt"></filter>
       </analyzer>
       <analyzer type="query">
-	<charFilter class="solr.MappingCharFilterFactory" mapping="mapping-ISOLatin1Accent.txt"/>
         <tokenizer class="solr.WhitespaceTokenizerFactory"></tokenizer>
         <filter class="solr.SynonymFilterFactory" synonyms="synonyms.txt" ignoreCase="true"
           expand="true"></filter>
@@ -536,9 +532,6 @@
     <field name="mods.organization" type="text" indexed="true" stored="false" multiValued="true"></field>
     <field name="mods.subjectGenre" type="text" indexed="true" stored="false" multiValued="true"></field>
     <field name="mods.scale" type="text" indexed="true" stored="false" multiValued="true"></field>
-    <field name="mods.subjectTitle" type="text" indexed="true" stored="false" multiValued="true"></field>
-    <field name="mods.subjectConference" type="text" indexed="true" stored="false"
-      multiValued="true"></field>
     <!--endsubject-->
     <field name="mods.handle" type="text" indexed="true" stored="false" multiValued="true"></field>
     <field name="mods.rightsStatement" type="text" indexed="true" stored="false" multiValued="true"></field>
@@ -611,8 +604,6 @@
     <field name="People" type="string" indexed="true" stored="true" multiValued="true"></field>
     <field name="Organizations" type="string" indexed="true" stored="true" multiValued="true"></field>
     <field name="Subject_Genres" type="string" indexed="true" stored="true" multiValued="true"></field>
-    <field name="Subject_Titles" type="string" indexed="true" stored="true" multiValued="true"></field>
-    <field name="Subject_Conferences" type="string" indexed="true" stored="true" multiValued="true"></field>
     <field name="Scale" type="string" indexed="true" stored="true" multiValued="true"></field>
     <field name="Handle" type="string" indexed="true" stored="true" multiValued="true"></field>
     <field name="Rights_Statement" type="string" indexed="true" stored="true" multiValued="true"></field>
@@ -645,25 +636,23 @@
     <field name="Language_of_Cataloging" type="string" indexed="true" stored="true"
       multiValued="true"></field>
     <!-- ETD Fields -->
-    <field name="Thesis_Advisor" type="text" indexed="true" stored="false" multiValued="true"></field>
-    <field name="Committee_Member" type="text" indexed="true" stored="false" multiValued="true"></field>
-    <field name="School_or_Department" type="text" indexed="true" stored="false" multiValued="true"></field>
+    <field name="Thesis Advisor" type="text" indexed="true" stored="false" multiValued="true"></field>
+    <field name="Committee Member" type="text" indexed="true" stored="false" multiValued="true"></field>
+    <field name="School or Department" type="text" indexed="true" stored="false" multiValued="true"></field>
     <field name="Institution" type="text" indexed="true" stored="false" multiValued="true"></field>
-    <field name="Degree_Type" type="text" indexed="true" stored="false" multiValued="true"></field>
-    <field name="Degree_Name" type="text" indexed="true" stored="false" multiValued="true"></field>
-    <field name="Access_Restrictions" type="text" indexed="true" stored="false" multiValued="true"></field>
+    <field name="Degree Type" type="text" indexed="true" stored="false" multiValued="true"></field>
+    <field name="Degree Name" type="text" indexed="true" stored="false" multiValued="true"></field>
+    <field name="Access Restrictions" type="text" indexed="true" stored="false" multiValued="true"></field>
     <!-- Metafields -->
     <field name="Titles" type="text" indexed="true" stored="false" multiValued="true"></field>
-    <field name="Creators" type="text" indexed="true" stored="true" multiValued="true"></field>
-    <field name="Contributors" type="text" indexed="true" stored="true" multiValued="true"></field>
-    <field name="Date_Fields" type="text" indexed="true" stored="true" multiValued="true"></field>
-    <field name="Subjects" type="text" indexed="true" stored="true" multiValued="true"></field>
-    <field name="Identifiers" type="text" indexed="true" stored="true" multiValued="true"></field>
+    <field name="Creators" type="text" indexed="true" stored="false" multiValued="true"></field>
+    <field name="Contributors" type="text" indexed="true" stored="false" multiValued="true"></field>
+    <field name="Date_Fields" type="text" indexed="true" stored="false" multiValued="true"></field>
+    <field name="Subjects" type="text" indexed="true" stored="false" multiValued="true"></field>
+    <field name="Identifiers" type="text" indexed="true" stored="false" multiValued="true"></field>
     <field name="Note_Fields" type="text" indexed="true" stored="false" multiValued="true"></field>
-    <field name="Material_Types" type="text" indexed="true" stored="true" multiValued="true"></field>
-    <field name="COSPL_Creators" type="text" indexed="true" stored="true" multiValued="true"></field>
-    <field name="COSPL_CC" type="string" indexed="true" stored="true" multiValued="true"></field>
-    <field name="COSPL_Agency" type="string" indexed="true" stored="true" multiValued="true"></field>
+    <field name="Material_Types" type="text" indexed="true" stored="false" multiValued="true"></field>
+    <field name="COSPL_Creators" type="text" indexed="true" stored="false" multiValued="true"></field>
 
     <!--___________________________________________END MODS________________________________________-->
 
@@ -737,8 +726,7 @@
 
   <!--SINGLE FIELDS-->
 
-  <copyField source="fgs.createdDate" dest="date_s" type="string" indexed="true" stored="true"
-    multiValued="true"></copyField>
+  <copyField source="fgs.createdDate" dest="date_s" type="string" indexed="true" stored="true" multiValued="true"></copyField>
   <copyField source="mods.title" dest="Title" type="string" indexed="true" stored="true"
     multiValued="true"></copyField>
   <copyField source="mods.titleAlt" dest="Alternative_Title" type="string" indexed="true"
@@ -781,13 +769,9 @@
     multiValued="true"></copyField>
   <copyField source="mods.people" dest="People" type="string" indexed="true" stored="true"
     multiValued="true"></copyField>
-  <copyField source="mods.organization" dest="Organizations" type="string" indexed="true"
+  <copyField source="mods.organizations" dest="Organizations" type="string" indexed="true"
     stored="true" multiValued="true"></copyField>
   <copyField source="mods.subjectGenre" dest="Subject_Genres" type="string" indexed="true"
-    stored="true" multiValued="true"></copyField>
-  <copyField source="mods.subjectConference" dest="Subject_Conferences" type="string" indexed="true"
-    stored="true" multiValued="true"></copyField>
-  <copyField source="mods.subjectTitles" dest="Subject_Titles" type="string" indexed="true"
     stored="true" multiValued="true"></copyField>
   <copyField source="mods.scale" dest="Scale" type="string" indexed="true" stored="true"
     multiValued="true"></copyField>
@@ -884,8 +868,6 @@
     multiValued="true"></copyField>
   <copyField source="mods.succeedingTitle" dest="Titles" type="text" indexed="true" stored="true"
     multiValued="true"></copyField>
-  <copyField source="mods.subjectTitle" dest="Titles" type="text" indexed="true" stored="true"
-    multiValued="true"></copyField>
   <!-- CREATORS -->
   <copyField source="mods.creator" dest="Creators" type="text" indexed="true" stored="true"
     multiValued="true"></copyField>
@@ -897,23 +879,13 @@
   <copyField source="mods.contributorCorporate" dest="Contributors" type="text" indexed="true"
     stored="true" multiValued="true"></copyField>
   <!--COSPL ADVANCED SEARCH CREATORS-->
-  <copyField source="mods.creator" dest="COSPL_Creators" type="text" indexed="true" stored="true"
+   <copyField source="mods.creator" dest="COSPL_Creators" type="text" indexed="true" stored="true"
     multiValued="true"></copyField>
-  <copyField source="mods.creatorCorporate" dest="COSPL_Creators" type="text" indexed="true"
-    stored="true" multiValued="true"></copyField>
-  <copyField source="mods.contributor" dest="COSPL_Creators" type="text" indexed="true"
-    stored="true" multiValued="true"></copyField>
+  <copyField source="mods.creatorCorporate" dest="COSPL_Creators" type="text" indexed="true" stored="true"
+    multiValued="true"></copyField>
+  <copyField source="mods.contributor" dest="COSPL_Creators" type="text" indexed="true" stored="true"
+    multiValued="true"></copyField>
   <copyField source="mods.contributorCorporate" dest="COSPL_Creators" type="text" indexed="true"
-    stored="true" multiValued="true"></copyField>
-   <!--COSPL DISPLAY CC Creators and Contributors-->
-  <copyField source="mods.creator" dest="COSPL_CC" type="string" indexed="true" stored="true"
-    multiValued="true"></copyField>
-  <copyField source="mods.contributor" dest="COSPL_CC" type="string" indexed="true"
-    stored="true" multiValued="true"></copyField>
-     <!--COSPL DISPLAY AGENCY-->
-  <copyField source="mods.creatorCorporate" dest="COSPL_Agency" type="string" indexed="true"
-    stored="true" multiValued="true"></copyField>
-  <copyField source="mods.contributorCorporate" dest="COSPL_Agency" type="string" indexed="true"
     stored="true" multiValued="true"></copyField>
   <!-- SUBJECTS -->
   <copyField source="mods.topic" dest="Subjects" type="text" indexed="true" stored="true"
@@ -930,10 +902,6 @@
     multiValued="true"></copyField>
   <copyField source="mods.scale" dest="Subjects" type="text" indexed="true" stored="true"
     multiValued="true"></copyField>
-  <copyField source="mods.subjectTitle" dest="Subjects" type="text" indexed="true" stored="true"
-    multiValued="true"></copyField>
-  <copyField source="mods.subjectConference" dest="Subjects" type="text" indexed="true"
-    stored="true" multiValued="true"></copyField>
   <!-- DATE FIELDS -->
   <copyField source="mods.dateCreated" dest="Date_Fields" type="string" indexed="true" stored="true"
     multiValued="true"></copyField>
